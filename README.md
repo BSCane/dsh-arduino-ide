@@ -1,7 +1,5 @@
 # dsh-arduino-ide
 
-[![npm version](https://img.shields.io/npm/v/dsh-arduino-ide?label=npm&color=blue)](https://www.npmjs.com/package/dsh-arduino-ide)
-[![npm downloads](https://img.shields.io/npm/dm/dsh-arduino-ide?color=brightgreen)](https://www.npmjs.com/package/dsh-arduino-ide)
 [![stars](https://img.shields.io/github/stars/BSCane/dsh-arduino-ide?style=social)](https://github.com/BSCane/dsh-arduino-ide)
 [![license](https://img.shields.io/github/license/BSCane/dsh-arduino-ide?color=orange)](https://github.com/BSCane/dsh-arduino-ide/blob/main/LICENSE)
 
@@ -14,10 +12,7 @@ DSH Web 界面内的 **Arduino IDE 工作区 + Agent 友好化开发链路**（�
 ## 安装
 
 ```sh
-# npm 发布版（推荐）
-dsh plugin --profile web add dsh-arduino-ide
-
-# 或直接从 GitHub 安装
+# 从 GitHub 安装
 dsh plugin --profile web add github:BSCane/dsh-arduino-ide
 ```
 
