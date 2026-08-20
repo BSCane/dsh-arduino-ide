@@ -1,10 +1,27 @@
 # dsh-arduino-ide
 
+[![npm version](https://img.shields.io/npm/v/dsh-arduino-ide?label=npm&color=blue)](https://www.npmjs.com/package/dsh-arduino-ide)
+[![npm downloads](https://img.shields.io/npm/dm/dsh-arduino-ide?color=brightgreen)](https://www.npmjs.com/package/dsh-arduino-ide)
+[![stars](https://img.shields.io/github/stars/BSCane/dsh-arduino-ide?style=social)](https://github.com/BSCane/dsh-arduino-ide)
+[![license](https://img.shields.io/github/license/BSCane/dsh-arduino-ide?color=orange)](https://github.com/BSCane/dsh-arduino-ide/blob/main/LICENSE)
+
 DSH Web 界面内的 **Arduino IDE 工作区 + Agent 友好化开发链路**（静态插件 / bundle plugin）。
 参照《Arduino IDE 基础功能总结》实现人用工作台，并按《Arduino 开发流程 Agent 友好化与可视化方案讨论》方案 A
 实现 Agent 可执行的工具链路与全过程可视化：编写 Sketch → 验证编译 → 选择板卡/端口 → 上传 → 串口调试。
 
 > 设计文档：见 `../Arduino开发流程Agent友好化与可视化方案讨论.md`（同工作区）
+
+## 安装
+
+```sh
+# npm 发布版（推荐）
+dsh plugin --profile web add dsh-arduino-ide
+
+# 或直接从 GitHub 安装
+dsh plugin --profile web add github:BSCane/dsh-arduino-ide
+```
+
+安装完成后**重启 DSH**（bundle 层栈在启动时装配）。卸载：`dsh plugin --profile web remove dsh-arduino-ide`。
 
 ## 功能
 
@@ -32,17 +49,6 @@ DSH Web 界面内的 **Arduino IDE 工作区 + Agent 友好化开发链路**（�
   - 颜色/字体全部使用 `--dsw-alias-*` / `--dsw-font-*` 设计 token，自动适配明暗主题
   - 板卡/端口选择、文件操作菜单为原生下拉 Menu（替代裸 `<select>`）
   - 编译/上传输出为原生 TerminalBlock 终端卡片；状态栏为 StateDot 状态点
-
-## 安装
-
-```sh
-# 在插件源码目录的父级执行（或直接给绝对路径）
-dsh plugin --profile web add link:D:\Program Files\DSH\test\arduino-ide
-```
-
-或发布到 npm / GitHub 后：`dsh plugin --profile web add dsh-arduino-ide`
-
-安装完成后 **重启 DSH**（bundle 层栈在启动时装配）。
 
 ## 前置条件
 

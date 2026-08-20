@@ -16,6 +16,14 @@
   ],
   "type": "module",
   "main": "lib/index.js",
+  "homepage": "https://github.com/BSCane/dsh-arduino-ide#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BSCane/dsh-arduino-ide.git"
+  },
+  "bugs": {
+    "url": "https://github.com/BSCane/dsh-arduino-ide/issues"
+  },
   "exports": {
     ".": "./lib/index.js",
     "./client": "./lib/client.js",
@@ -26,8 +34,12 @@
     "lib",
     "cordis.patch.yml",
     "README.md",
-    "CHANGELOG.md"
+    "CHANGELOG.md",
+    "LICENSE"
   ],
+  "scripts": {
+    "prepack": "node scripts/prepack-check.js"
+  },
   "_comment": [
     "=============== dsh-arduino-ide 包清单说明 ===============",
     "type: module —— ESM",
