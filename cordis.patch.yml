@@ -1,0 +1,28 @@
+# ============================================================================
+# dsh-arduino-ide 的 bundle patch —— 把 Arduino IDE 工作区挂进 DSH 配置树
+# ============================================================================
+#
+# 【这是什么】
+#   本文件是插件的"挂载声明"。DSH 启动时按 bundle 层栈把各插件的 patch
+#   叠起来组成配置树，本文件就是 dsh-arduino-ide 这一层的内容。
+#
+# 【工作原理】
+#   - insert：往配置树里添加新的插件行（entry）
+#   - id: arduino-ide —— 行标识（唯一）
+#   - name: 'dsh-arduino-ide' —— 模块名，解析到包入口 lib/index.js（宿主半侧）
+#   - 因为 package.json 声明了 dsh.client，DSH 模块系统同时把这个包扫描为
+#     "浏览器插件"，提供 /plugins/dsh-arduino-ide/client.js 给页面
+#
+# 【config 说明】
+#   cliPath：arduino-cli 的绝对路径，留空自动探测（环境变量
+#            ARDUINO_CLI_PATH > 常见安装目录 > PATH）。
+#   workRoot：Sketch 工作区根，留空默认 $DSH_HOME/arduino-ide。
+#   注意：浏览器半侧收不到这些配置，它们只影响宿主半侧。
+# ============================================================================
+
+- insert:
+    - id: arduino-ide
+      name: 'dsh-arduino-ide'
+      config:
+        cliPath: ''    # 例如 'D:\\Program Files\\arduino-cli_1.5.2-rc.1_Windows_64bit\\arduino-cli.exe'
+        workRoot: ''   # 例如 'D:\\arduino-ide-workspace'

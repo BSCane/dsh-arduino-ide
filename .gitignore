@@ -1,0 +1,14 @@
+# 依赖与构建产物
+node_modules/
+dist/
+*.log
+
+# 冒烟测试残留
+.smoke-*/
+.smoke-*
+
+# 系统/编辑器
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

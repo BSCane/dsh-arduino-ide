@@ -1,0 +1,64 @@
+{
+  "name": "dsh-arduino-ide",
+  "version": "0.2.0",
+  "description": "DSH Web 界面内的 Arduino IDE 工作区 + Agent 友好化开发链路：Sketch 编辑器（语法高亮/括号匹配/自动缩进/查找替换）、编译验证、上传、串口监视器+绘图器、板卡/库管理器、示例浏览、项目归档；注册 17+ 个 arduino_* Agent 工具（直接执行开发任务），事件总线把 Agent 每次动作实时可视化到面板「Agent 活动」页/回合尾卡/工具卡，板卡/端口/Sketch 双向状态同步。真实调用 arduino-cli。",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "arduino",
+    "arduino-ide",
+    "agent-tools",
+    "embedded",
+    "serial-monitor",
+    "web-ui",
+    "cordis"
+  ],
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "_comment": [
+    "=============== dsh-arduino-ide 包清单说明 ===============",
+    "type: module —— ESM",
+    "main: lib/index.js —— 插件入口（Cordis 插件：name/inject/apply）",
+    "lib/arduino-service.js —— 共享服务层：唯一业务实现 + 事件总线 + 状态",
+    "lib/tools.js —— arduino_* Agent 工具集（@deepseek-ai/dsh-tools defineTool）",
+    "exports['./client'] —— 浏览器半侧入口，DSH 模块系统按它提供 /plugins/dsh-arduino-ide/client.js",
+    "dsh.bundle.patch —— 声明本包是 bundle，patch 文件是 cordis.patch.yml（安装后自动进层栈）",
+    "dsh.client —— 声明浏览器半侧的注入依赖和平台（web）",
+    "peerDependencies —— 运行时由宿主（DSH）提供，本包不打包；宿主半侧只用 node 内建模块",
+    "========================================================"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-runtime"
+      ],
+      "platform": "web"
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.1",
+    "@deepseek-ai/dsh-client-runtime": "^0.1.0-rc.6",
+    "@deepseek-ai/dsh-client-ui-primitives": "^0.1.0-rc.6",
+    "@deepseek-ai/dsh-client-ui-slots": "^0.1.0-rc.6",
+    "@deepseek-ai/dsh-host-webserver": "^0.1.0-rc.6",
+    "@deepseek-ai/dsh-tools": "^0.1.0-rc.6",
+    "react": "^18.2.0"
+  },
+  "license": "MIT"
+}
